@@ -31,7 +31,17 @@ h1 {
   border: 6px solid white;
   border-radius: 6px;
   position: absolute;
+  -webkit-animation: blink 0.5s infinite;
+  -moz-animation: blink 0.5s infinite;
   animation: blink 0.5s infinite;
+}
+
+@-webkit-keyframes blink {
+  50% {opacity: 0.5;}
+}
+
+@-moz-keyframes blink {
+  50% {opacity: 0.5;}
 }
 
 @keyframes blink {

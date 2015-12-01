@@ -4,13 +4,18 @@
   "description": "Classic Snake Game",
   "main": "snake.js",
   "scripts": {
-    "start": "npm run build && http-server",
+    "start": "npm run build && npm run start-server",
+    "start-server": "http-server dist",
     "test": "semistandard",
     "build": "npm run clean && mkdir dist && npm run build-html && npm run build-css && npm run build-js",
     "clean": "rm -rf dist",
     "build-html": "cp src/index.html dist/index.html",
     "build-css": "cp src/snake.css dist/snake.css",
-    "build-js": "browserify src/snake.js --outfile dist/snake.js --transform babelify"
+    "build-js": "browserify src/snake.js --outfile dist/snake.js --transform babelify",
+    "watch": "npm run build && npm run watch-html & npm run watch-css & npm run watch-js & npm run start-server",
+    "watch-html": "watch-spawn -p 'src/index.html' npm run build-html",
+    "watch-css": "watch-spawn -p 'src/snake.css' npm run build-css",
+    "watch-js": "watchify src/snake.js --outfile dist/snake.js --transform babelify --verbose"
   },
   "repository": {
     "type": "git",
@@ -28,5 +33,9 @@
     "browserify": "^12.0.1",
     "http-server": "^0.8.5",
     "semistandard": "^7.0.2"
+  },
+  "devDependencies": {
+    "watch-spawn": "^1.0.6",
+    "watchify": "^3.6.0"
   }
 }

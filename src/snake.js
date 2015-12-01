@@ -8,8 +8,8 @@ var snakeChain = [];
 var headPos = [29, 10];
 var foodPos = [0, 0];
 var title = document.querySelector('h1');
-var playground = document.querySelector('#playground');
-var food = document.querySelector('#food');
+var playground = document.getElementById('playground');
+var food = document.getElementById('food');
 
 var snakeTemplate = document.createElement('div');
 snakeTemplate.classList.add('piece');
@@ -36,7 +36,7 @@ function collide (pos) {
   if (pos[1] < 0) return true;
   if (pos[1] >= 50) return true;
   return snakeChain.some(function (v) {
-    console.log(position(v));
+    // console.log(position(v));
     return (position(v)[0] === pos[0]) && (position(v)[1] === pos[1]);
   });
 }
